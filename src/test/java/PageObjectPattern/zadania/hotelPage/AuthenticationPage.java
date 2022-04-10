@@ -6,38 +6,44 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AuthenticationPage {
-
     private WebDriver driver;
 
     @FindBy(id = "email_create")
-    private WebElement newUserEmailInput;
+    private WebElement emailInput;
 
     @FindBy(id = "SubmitCreate")
-    private WebElement createAnAccountButton;
+    private WebElement signInButton;
 
     @FindBy(id = "email")
     private WebElement loginEmailInput;
 
     @FindBy(id = "passwd")
-    private WebElement passwdInput;
+    private WebElement passwordInput;
 
     @FindBy(id = "SubmitLogin")
     private WebElement submitLoginButton;
-
-
 
     public AuthenticationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void startCreatingAnAccount(String email) {
-        newUserEmailInput.sendKeys(email);
-        createAnAccountButton.click();
+    public void startCreateAccount(String email) {
+        emailInput.sendKeys(email);
+        signInButton.click();
     }
-    public void logIn(String email, String password) {
+    public void inputRegistrationEmail(String email){
+        emailInput.sendKeys(email);
+    }
+    public void clickSignInButton(){
+        signInButton.click();
+    }
+
+
+    public void logIn(String email, String password){
         loginEmailInput.sendKeys(email);
-        passwdInput.sendKeys(password);
+        passwordInput.sendKeys(password);
         submitLoginButton.click();
     }
+
 }

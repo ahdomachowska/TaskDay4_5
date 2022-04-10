@@ -6,34 +6,38 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationPage {
-
     private WebDriver driver;
 
     @FindBy(id = "customer_firstname")
-    private WebElement FirstNameInput;
+    private WebElement firstName;
 
     @FindBy(id = "customer_lastname")
-    private WebElement lastNameInput;
+    private WebElement lastName;
 
     @FindBy(id = "passwd")
-    private WebElement passwdInput;
+    private WebElement password;
 
     @FindBy(id = "submitAccount")
     private WebElement submitButton;
 
+
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-
     }
-
-    public void registerUser(String firstName, String lastName, String password) {
-        FirstNameInput.sendKeys(firstName);
-        lastNameInput.sendKeys(lastName);
-        passwdInput.sendKeys(password);
+    public void register(String firstName, String lastName, String password) {
+        this.firstName.sendKeys(firstName);
+        this.lastName.sendKeys(lastName);
+        this.password.sendKeys(password);
+        this.submitButton.click();
+    }
+    public void fillForm(String firstName, String lastName, String password) {
+        this.firstName.sendKeys(firstName);
+        this.lastName.sendKeys(lastName);
+        this.password.sendKeys(password);
+    }
+    public void clickSubmitButton(){
         submitButton.click();
-
     }
 
 }
-
